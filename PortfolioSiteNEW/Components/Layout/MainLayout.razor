@@ -1,0 +1,71 @@
+@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="_theme" IsDarkMode="true" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+
+
+    <MudAppBar Elevation="0"
+               Style="background: linear-gradient(135deg, #052E16, #14532D, #166534); color: white;">
+
+        <MudText Typo="Typo.h6" Class="mr-6">Ben Dev</MudText>
+
+        <MudButton Href="/" Color="Color.Inherit">
+            Home
+        </MudButton>
+
+        <MudMenu Label="Projects"
+                 Color="Color.Inherit"
+                 Variant="Variant.Text">
+
+            <MudMenuItem Href="/projects/companies-house">
+                Companies House Data Analyser
+            </MudMenuItem>
+
+            <MudMenuItem Href="/projects/code-retineo">
+                Code Retineo
+            </MudMenuItem>
+
+            <MudMenuItem Href="/projects/networked-arena">
+                Networked Arena
+            </MudMenuItem>
+
+        </MudMenu>
+
+        <MudButton Href="/about" Color="Color.Inherit">
+            About
+        </MudButton>
+
+        <MudButton Href="/contact" Color="Color.Inherit">
+            Contact
+        </MudButton>
+
+        <MudSpacer />
+
+    </MudAppBar>
+
+
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+
+</MudLayout>
+
+               
+@code {
+    private readonly MudTheme _theme = new()
+    {
+        PaletteDark = new PaletteDark
+        {
+            Primary = "#22C55E",
+            Secondary = "#16A34A",
+            Background = "#0A0F0D",
+            Surface = "#111814",
+            TextPrimary = "#F0FDF4",
+            TextSecondary = "#A7C4B0"
+        }
+    };
+}

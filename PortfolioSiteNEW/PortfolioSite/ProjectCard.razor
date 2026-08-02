@@ -1,0 +1,35 @@
+@using PortfolioSite
+@using MudBlazor
+
+<MudCard Class="d-flex flex-column" Style="height:100%;">
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Primary">
+                <MudIcon Icon="@Project.Icon" />
+            </MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@Project.Title</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent Class="flex-grow-1">
+        <MudText Typo="Typo.body2">@Project.Description</MudText>
+        <MudStack Row="true" Wrap="Wrap.Wrap" Class="mt-3" Spacing="1">
+            @foreach (var tag in Project.Tags)
+            {
+                <MudChip T="string" Size="Size.Small" Color="Color.Default">@tag</MudChip>
+            }
+        </MudStack>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton Href="@Project.Url" EndIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary">
+            View Project
+        </MudButton>
+    </MudCardActions>
+</MudCard>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public ProjectInfo Project { get; set; } = default!;
+}

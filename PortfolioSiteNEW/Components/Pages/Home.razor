@@ -1,0 +1,144 @@
+﻿@page "/"
+
+@using PortfolioSiteNEW.PortfolioSite
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=12</MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=12 sm=6</MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=12 sm=6</MudPaper>
+    </MudItem>
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6 sm=3</MudPaper>
+    </MudItem>
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6 sm=3</MudPaper>
+    </MudItem>
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6 sm=3</MudPaper>
+    </MudItem>
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6 sm=3</MudPaper>
+    </MudItem>
+</MudGrid>
+
+<MudButton Variant="Variant.Filled">Default</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Primary">Primary</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Secondary">Secondary</MudButton>
+<MudButton Variant="Variant.Filled" Disabled="true">Disabled</MudButton>
+
+<!-- Hero -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-16">
+    <MudGrid>
+        <MudItem xs="12" md="7" Class="d-flex flex-column justify-center">
+            <MudText Typo="Typo.h2" Class="mb-4">Hi, I'm Ben 👋</MudText>
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Class="mb-4">
+                Independent Software Developer
+            </MudText>
+            <MudText Typo="Typo.body1" Class="mb-6">
+                I build focused, self-contained tools — from data processing applications
+                to desktop utilities and multiplayer game systems.
+            </MudText>
+            <MudStack Row="true" Spacing="2">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/projects"
+                           EndIcon="@Icons.Material.Filled.ArrowForward">
+                    View My Work
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" Href="/contact"
+                           StartIcon="@Icons.Material.Filled.Mail">
+                    Get in Touch
+                </MudButton>
+            </MudStack>
+        </MudItem>
+        <MudItem xs="12" md="5" Class="d-flex justify-center align-center">
+            <MudIcon Icon="@Icons.Material.Filled.Code" Style="font-size: 12rem; opacity: 0.15;" />
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudDivider />
+
+<!-- About Preview -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudText Typo="Typo.h4" Class="mb-4">About Me</MudText>
+            <MudText Typo="Typo.body1">
+                
+                Python, C# and Unity/VR, yappery - I have a passion for creating software that solves real-world problems. With a background in computer science and years of experience in the industry, I bring a unique perspective to every project I undertake. My journey has been fueled by curiosity and a desire to innovate, leading me to explore various technologies and frameworks. Whether it's developing web applications, crafting immersive VR experiences, or optimizing data processing pipelines, I thrive on challenges that push the boundaries of what's possible.
+                for the complete story.
+            </MudText>
+            <MudButton Href="/about" Class="mt-4" EndIcon="@Icons.Material.Filled.ArrowForward">
+                More About Me
+            </MudButton>
+        </MudItem>
+        <MudItem xs="12" md="6">
+            <MudGrid>
+                @foreach (var stat in _stats)
+                {
+                    <MudItem xs="6">
+                        <MudPaper Class="pa-4 text-center" Elevation="1">
+                            <MudIcon Icon="@stat.Icon" Color="Color.Primary" Class="mb-2" />
+                            <MudText Typo="Typo.h5">@stat.Value</MudText>
+                            <MudText Typo="Typo.caption">@stat.Label</MudText>
+                        </MudPaper>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudDivider />
+
+<!-- Projects Preview -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
+    <MudText Typo="Typo.h4" Class="mb-2">Featured Projects</MudText>
+    <MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-6">
+        A few things I've been building. Placeholder descriptions — swap in real project details.
+    </MudText>
+    <MudGrid>
+        @foreach (var project in ProjectData.Projects)
+        {
+            <MudItem xs="12" sm="6" md="4">
+                <ProjectCard Project="project" />
+            </MudItem>
+        }
+    </MudGrid>
+</MudContainer>
+
+<MudDivider />
+
+<!-- Contact CTA -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-12 text-center">
+    <MudText Typo="Typo.h4" Class="mb-4">Let's Work Together</MudText>
+    <MudText Typo="Typo.body1" Class="mb-6">
+        Placeholder call-to-action text. Have a project in mind or just want to chat? Reach out.
+    </MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Href="/contact"
+               StartIcon="@Icons.Material.Filled.Mail">
+        Contact Me
+    </MudButton>
+</MudContainer>
+
+@code {
+    private record Stat(string Icon, string Value, string Label);
+
+    private readonly List<Stat> _stats = new()
+    {
+        new(Icons.Material.Filled.Code, "10+", "Projects Built"),
+        new(Icons.Material.Filled.Devices, "3", "Core Platforms"),
+        new(Icons.Material.Filled.Timeline, "5+", "Years Coding"),
+        new(Icons.Material.Filled.EmojiObjects, "∞", "Ideas Brewing")
+    };
+}
