@@ -1,0 +1,210 @@
+﻿<div class="honeycomb-wrapper">
+    <svg class="honeycomb-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+        @foreach (var hex in hexes)
+        {
+            <polygon class="hex-base" points="@hex.Points"
+                     style="animation-delay:@(hex.Delay.ToString("F2"))s; animation-duration:@(hex.Duration.ToString("F2"))s;" />
+            @if (hex.IsGreen)
+            {
+                <polygon class="hex-green" points="@hex.Points"
+                         style="animation-delay:@(hex.GreenDelay.ToString("F2"))s; animation-duration:@(hex.GreenDuration.ToString("F2"))s;" />
+            }
+        }
+    </svg>
+
+    <div class="honeycomb-inner">
+        @if (!string.IsNullOrEmpty(ProfileImageSrc))
+        {
+            <img src="@ProfileImageSrc" alt="Profile photo" class="profile-photo" />
+        }
+
+        <div class="honeycomb-content">
+            @ChildContent
+        </div>
+    </div>
+</div>
+
+<style>
+    .honeycomb-wrapper {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #141614;
+    }
+
+    .honeycomb-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .hex-base {
+        fill: #3a3d3a;
+        stroke: #55584f;
+        stroke-width: 1.5;
+        opacity: 0.18;
+        animation-name: hexFade;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    .hex-green {
+        fill: #0d3d21;
+        stroke: #2fae66;
+        stroke-width: 1.5;
+        opacity: 0;
+        animation-name: hexFadeGreen;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    @@keyframes hexFade {
+        0%, 100% {
+            opacity: 0.18;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    @@keyframes hexFadeGreen {
+        0%, 100% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.85;
+        }
+    }
+
+    .honeycomb-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100vh;
+        padding: 2rem 4rem;
+        gap: 3rem;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #2fae66;
+        flex-shrink: 0;
+    }
+
+    .honeycomb-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        color: #f2efe9;
+        gap: 0.75rem;
+        flex: 1;
+    }
+
+        .honeycomb-content .quote {
+            font-style: italic;
+            color: #a9b0aa;
+            max-width: 480px;
+        }
+
+        .honeycomb-content .cta-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+    @@media (max-width: 800px) {
+        .honeycomb-inner {
+            flex-direction: column;
+            padding: 2rem 1.5rem;
+            justify-content: center;
+        }
+
+        .honeycomb-content {
+            align-items: center;
+            text-align: center;
+        }
+
+            .honeycomb-content .cta-row {
+                justify-content: center;
+            }
+    }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .hex-base, .hex-green {
+            animation: none;
+            opacity: 0.22;
+        }
+    }
+</style>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? ProfileImageSrc { get; set; }
+
+    private List<HexCell> hexes = new();
+    private readonly Random rng = new();
+
+    protected override void OnInitialized() => GenerateGrid();
+
+    private void GenerateGrid()
+    {
+        const double r = 60;
+        const int colStart = -1, cols = 16;
+        const int rowStart = -1, rows = 11;
+        double hSpacing = r * 1.5;
+        double vSpacing = r * Math.Sqrt(3);
+
+        for (int col = colStart; col < cols; col++)
+        {
+            double x = col * hSpacing;
+            double yOffset = col % 2 == 0 ? 0 : vSpacing / 2;
+            for (int row = rowStart; row < rows; row++)
+            {
+                double y = row * vSpacing + yOffset;
+                hexes.Add(new HexCell
+                {
+                    Points = HexPoints(x, y, r),
+                    Delay = rng.NextDouble() * 4,
+                    Duration = 2.5 + rng.NextDouble() * 3,
+                    IsGreen = rng.NextDouble() < 0.12,
+                    GreenDelay = rng.NextDouble() * 8,
+                    GreenDuration = 4 + rng.NextDouble() * 5
+                });
+            }
+        }
+    }
+
+    private string HexPoints(double cx, double cy, double r)
+    {
+        var pts = new List<string>();
+        for (int i = 0; i < 6; i++)
+        {
+            double angle = Math.PI / 180 * (60 * i);
+            pts.Add($"{(cx + r * Math.Cos(angle)):F1},{(cy + r * Math.Sin(angle)):F1}");
+        }
+        return string.Join(" ", pts);
+    }
+
+    private class HexCell
+    {
+        public string Points { get; set; } = "";
+        public double Delay { get; set; }
+        public double Duration { get; set; }
+        public bool IsGreen { get; set; }
+        public double GreenDelay { get; set; }
+        public double GreenDuration { get; set; }
+    }
+}
