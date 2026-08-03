@@ -69,3 +69,110 @@
         }
     };
 }
+<!-- Place this component ONCE, e.g. in MainLayout.razor, so it sits behind all page content -->
+@* yeah just had this here but want to make it scroll  *@
+<div class="honeycomb-bg-wrapper">
+    <svg class="honeycomb-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+        @foreach (var hex in hexes)
+        {
+            <polygon class="hex-base" points="@hex.Points"
+                     style="animation-delay:@(hex.Delay.ToString("F2"))s; animation-duration:@(hex.Duration.ToString("F2"))s;" />
+        }
+    </svg>
+</div>
+
+<style>
+    .honeycomb-bg-wrapper {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        background: #0a0b0a;
+    }
+
+    .honeycomb-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hex-base {
+        fill: #1c1e1c;
+        stroke: #2a2c28;
+        stroke-width: 1.5;
+        opacity: 0.15;
+        animation-name: hexFade;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    @@keyframes hexFade {
+        0%, 100% {
+            opacity: 0.15;
+        }
+
+        50% {
+            opacity: 0.32;
+        }
+    }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .hex-base {
+            animation: none;
+            opacity: 0.18;
+        }
+    }
+</style>
+
+@code {
+    private List<HexCell> hexes = new();
+    private readonly Random rng = new();
+
+    protected override void OnInitialized() => GenerateGrid();
+
+    private void GenerateGrid()
+    {
+        const double r = 60;
+        const int colStart = -1, cols = 16;
+        const int rowStart = -1, rows = 11;
+        double hSpacing = r * 1.5;
+        double vSpacing = r * Math.Sqrt(3);
+
+        for (int col = colStart; col < cols; col++)
+        {
+            double x = col * hSpacing;
+            double yOffset = col % 2 == 0 ? 0 : vSpacing / 2;
+            for (int row = rowStart; row < rows; row++)
+            {
+                double y = row * vSpacing + yOffset;
+                hexes.Add(new HexCell
+                {
+                    Points = HexPoints(x, y, r),
+                    Delay = rng.NextDouble() * 4,
+                    Duration = 2.5 + rng.NextDouble() * 3
+                });
+            }
+        }
+    }
+
+    private string HexPoints(double cx, double cy, double r)
+    {
+        var pts = new List<string>();
+        for (int i = 0; i < 6; i++)
+        {
+            double angle = Math.PI / 180 * (60 * i);
+            pts.Add($"{(cx + r * Math.Cos(angle)):F1},{(cy + r * Math.Sin(angle)):F1}");
+        }
+        return string.Join(" ", pts);
+    }
+
+    private class HexCell
+    {
+        public string Points { get; set; } = "";
+        public double Delay { get; set; }
+        public double Duration { get; set; }
+    }
+}
