@@ -1,4 +1,5 @@
 ﻿@page "/"
+@page "/home"
 
 @using PortfolioSiteNEW.PortfolioSite
 @using PortfolioSiteNEW
@@ -8,7 +9,7 @@
 <HoneycombBackground ProfileImageSrc="images\Profile.jpg">
     <h1>Hi, I'm Ben Kilby 👋</h1>
     <p>Software developer • Solutions Architect • Game developer • Based in Hull </p>
-    <p class="quote">"Great software is built one honest problem at a time."</p>
+    <p class="quote">Constantly learning, growing, taking feedback and reaching heights</p>
 
     <div class="cta-row">
         <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/projects"
@@ -78,6 +79,27 @@
                     </MudItem>
                 }
             </MudGrid>
+            <MudPaper Class="pa-4 mt-4" Elevation="1">
+                <MudText Typo="Typo.subtitle1" Class="mb-3">Tech Stack</MudText>
+                <MudGrid>
+                    @foreach (var tech in _techStack)
+                    {
+                        <MudItem xs="3">
+                            <MudPaper Class="pa-3 text-center" Elevation="0" Style="background-color: transparent;">
+                                @if (tech.IconUrl is not null)
+                                {
+                                    <img src="@tech.IconUrl" alt="@tech.Name" style="width: 32px; height: 32px;" />
+                                }
+                                else
+                                {
+                                    <MudIcon Icon="@tech.MudIcon" Color="Color.Primary" Style="font-size: 32px;" />
+                                }
+                                <MudText Typo="Typo.caption" Class="mt-1" Style="display: block;">@tech.Name</MudText>
+                            </MudPaper>
+                        </MudItem>
+                    }
+                </MudGrid>
+            </MudPaper>
         </MudItem>
     </MudGrid>
 </MudContainer>
@@ -112,6 +134,25 @@
         public string? Company { get; set; }
         public string? Period { get; set; }
         public List<string> Description { get; set; } = new();
+    }
+
+    private List<TechItem> _techStack = new()
+{
+    new TechItem { Name = "Python", IconUrl = "https://cdn.simpleicons.org/python/3776AB" },
+    new TechItem { Name = "C# .net", IconUrl = "https://cdn.simpleicons.org/dotnet/512BD4" },
+    new TechItem { Name = "MudBlazor", IconUrl = "https://cdn.simpleicons.org/blazor/512BD4" },
+    new TechItem { Name = "OCR", MudIcon = Icons.Material.Filled.DocumentScanner },
+    new TechItem { Name = "Companies House", MudIcon = Icons.Material.Filled.Business },
+    new TechItem { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+    new TechItem { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+    new TechItem { Name = "SQLite", IconUrl = "https://cdn.simpleicons.org/sqlite/003B57" },
+};
+
+    public class TechItem
+    {
+        public string Name { get; set; } = "";
+        public string? IconUrl { get; set; }
+        public string? MudIcon { get; set; }
     }
 }
 
