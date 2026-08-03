@@ -33,15 +33,34 @@
 <MudDivider />
 
 <!-- About Preview -->
+<!-- About Preview -->
 <MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
     <MudGrid>
         <MudItem xs="12" md="6">
             <MudText Typo="Typo.h4" Class="mb-4">Experience</MudText>
-            <MudText Typo="Typo.body1">
-                
-                Python, C# and Unity/VR, yappery - I have a passion for creating software that solves real-world problems. With a background in computer science and years of experience in the industry, I bring a unique perspective to every project I undertake. My journey has been fueled by curiosity and a desire to innovate, leading me to explore various technologies and frameworks. Whether it's developing web applications, crafting immersive VR experiences, or optimizing data processing pipelines, I thrive on challenges that push the boundaries of what's possible.
-                for the complete story.
-            </MudText>
+            <MudTimeline TimelinePosition="TimelinePosition.Start">
+                @foreach (var exp in _experience)
+                {
+                    <MudTimelineItem Color="Color.Primary" Size="Size.Small">
+                        <ItemContent>
+                            <MudText Typo="Typo.subtitle1" Class="font-bold">@exp.Title</MudText>
+                            <MudText Typo="Typo.body2" Color="Color.Secondary">@exp.Company · @exp.Period</MudText>
+                            <MudText Typo="Typo.body2" Class="mt-1">@exp.Description[0]</MudText>
+                            @if (exp.Description.Count > 1)
+                            {
+                                <MudList T="string" Dense="true" Class="mt-1">
+                                    @foreach (var point in exp.Description.Skip(1))
+                                    {
+                                        <MudListItem Icon="@Icons.Material.Outlined.Circle" IconSize="Size.Small">
+                                            @point
+                                        </MudListItem>
+                                    }
+                                </MudList>
+                            }
+                        </ItemContent>
+                    </MudTimelineItem>
+                }
+            </MudTimeline>
             <MudButton Href="/about" Class="mt-4" EndIcon="@Icons.Material.Filled.ArrowForward">
                 More About Me
             </MudButton>
@@ -64,6 +83,37 @@
 </MudContainer>
 
 <MudDivider />
+
+@code {
+
+    public static List<string> uniExperience = new()
+    {
+        "Practical development across AI, game dev, graphics programming, VR/MR, and team-based projects.",
+        "Game Jams (always top 3). Once led a team of 2 and delivered complete prototypes under time pressure.",
+        "VR & MR Retail Systems. Built immersive retail simulations in Unity VR and Mixed Reality with custom interaction systems.",
+        "AI Chatbot Narrative Game (Agile, team of 3). Developed dialogue logic and sprint-based features for a game where players impersonate an AI.",
+        "OpenGL 3D Environment. Implemented matrices, indices, buffers, and scenegraphs for a custom rendering pipeline.",
+        "AI Module. Built and compared neural networks, A*, BFS/DFS, and non-linear regression for ML tasks."
+    };
+
+    private List<ExperienceItem> _experience = new()
+    {
+        new ExperienceItem { Title = "Feedback engineer", Company = "University of Hull", Period = "2025 – 2026", Description = new List<string> { "Marked students coding solutions and helped them with issues." } },
+        new ExperienceItem { Title = "Solutions architect", Company = "Flexworks", Period = "2025 – Present", Description = new List<string> { "Building tools spanning Companies data processing and intelligence, Python, OCR, APIs, web scraping." } },
+        new ExperienceItem { Title = "Computer science student", Company = "University of Hull", Period = "2024 - 2027", Description = uniExperience },
+        new ExperienceItem { Title = "IT student", Company = "Wilberforce College", Period = "2022 - 2024", Description = new List<string> { "Built data-driven applications using MS Access, performed cybersecurity investigations, and delivered IT support solutions as part of coursework." } },
+        new ExperienceItem { Title = "Game developer", Company = "DLX INTERACTIVE", Period = "2019 - 2022", Description = new List<string> { "Studying software engineering, algorithms, databases and advanced programming concepts." } },
+        // add more entries here
+    };
+
+    public class ExperienceItem
+    {
+        public string? Title { get; set; }
+        public string? Company { get; set; }
+        public string? Period { get; set; }
+        public List<string> Description { get; set; } = new();
+    }
+}
 
 <!-- Projects Preview -->
 <MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
