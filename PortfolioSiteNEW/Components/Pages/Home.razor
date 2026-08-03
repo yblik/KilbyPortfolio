@@ -28,8 +28,62 @@
 <MudButton Variant="Variant.Filled" Color="Color.Secondary">Secondary</MudButton>
 <MudButton Variant="Variant.Filled" Disabled="true">Disabled</MudButton> *@
 <MudDivider />
+@* digital protfolio gallery *@
 
+<MudGrid>
+    <MudItem xs="4">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">1</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="4">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">2</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="4">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">3</MudText>
+        </MudPaper>
+    </MudItem>
 
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">4</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">5</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">6</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">7</MudText>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="4">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">8</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="4">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">9</MudText>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="4">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
+            <MudText Typo="Typo.h6">10</MudText>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
 
 <MudDivider />
 
@@ -100,6 +154,35 @@
                     }
                 </MudGrid>
             </MudPaper>
+            <MudContainer MaxWidth="MaxWidth.Large" Class="pb-12">
+                <MudText Typo="Typo.h4" Class="mb-4">Education & Grades</MudText>
+                <MudGrid>
+                    @foreach (var edu in _education)
+                    {
+                        <MudItem xs="12" md="6">
+                            <MudPaper Class="pa-4" Elevation="1">
+                                <MudText Typo="Typo.subtitle1" Class="font-bold">@edu.Stage</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-2">@edu.Institution · @edu.Period</MudText>
+                                @if (edu.Grade is not null)
+                                {
+                                    <MudText Typo="Typo.body1" Class="mb-2">@edu.Grade</MudText>
+                                }
+                                @if (edu.Modules.Count > 0)
+                                {
+                                    <MudList T="string" Dense="true">
+                                        @foreach (var module in edu.Modules)
+                                        {
+                                            <MudListItem Icon="@Icons.Material.Filled.CheckCircle" IconColor="Color.Success" IconSize="Size.Small">
+                                                @module
+                                            </MudListItem>
+                                        }
+                                    </MudList>
+                                }
+                            </MudPaper>
+                        </MudItem>
+                    }
+                </MudGrid>
+            </MudContainer>
         </MudItem>
     </MudGrid>
 </MudContainer>
@@ -153,6 +236,61 @@
         public string Name { get; set; } = "";
         public string? IconUrl { get; set; }
         public string? MudIcon { get; set; }
+    }
+
+    private List<EducationItem> _education = new()
+{
+    new EducationItem
+    {
+        Stage = "Diploma Stage — Year 2",
+        Institution = "University of Hull",
+        Period = "2025 - 2026",
+        Modules = new List<string>
+        {
+            "Graphics Programming — Passed",
+            "AI (Machine Learning) — Passed",
+            "Design, Develop, Deploy — Passed",
+            "Advanced Programming (C++) — Passed",
+            "Extended Reality — Passed"
+        }
+    },
+    new EducationItem
+    {
+        Stage = "Certificate Stage — Year 1",
+        Institution = "University of Hull",
+        Period = "2024 - 2025",
+        Modules = new List<string>
+        {
+            "Data Structures & Algorithms — Passed",
+            "Programming Portfolio — Passed",
+            "Proffessional development — Passed",
+            "Architectures, OS & Cloud — Passed",
+            "Computational Thinking — Passed"
+        }
+    },
+    new EducationItem
+    {
+        Stage = "IT BTEC Extended Diploma",
+        Institution = "Wilberforce College",
+        Period = "2022 - 2024",
+        Grade = "D*D*D"
+    },
+    new EducationItem
+    {
+        Stage = "Secondary School",
+        Institution = "GCSE / BTEC",
+        Period = "",
+        Grade = "Computer Science — Grade 8 · IT BTEC — Distinction*, A*"
+    },
+};
+
+    public class EducationItem
+    {
+        public string Stage { get; set; } = "";
+        public string Institution { get; set; } = "";
+        public string Period { get; set; } = "";
+        public string? Grade { get; set; }
+        public List<string> Modules { get; set; } = new();
     }
 }
 
