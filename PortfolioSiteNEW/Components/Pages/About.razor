@@ -1,35 +1,146 @@
 ﻿@page "/about"
 
-<MudCarousel Class="mud-width-full" Style="height:200px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
-    <MudCarouselItem Transition="transition" Color="@Color.Primary">
-        <div class="d-flex" style="height:100%">
-            <img src="/images/9KkQCp.png" class="mx-auto my-auto" style="max-height:100%; max-width:100%; object-fit:contain;" />
+<MudCarousel Class="mud-width-full" Style="height:200px;" ShowArrows="false" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="true" TData="object">
+    <MudCarouselItem Transition="Transition.Slide" Color="@Color.Primary">
+        <div class="d-flex" style="height:200px;">
+            <img src="/images/EstudiousCOllection.jpg" class="mx-auto my-auto" style="max-height:100%; max-width:100%; object-fit:contain;" />
         </div>
     </MudCarouselItem>
-    <MudCarouselItem Transition="transition" Color="@Color.Secondary">
+    <MudCarouselItem Transition="Transition.Slide" Color="@Color.Secondary">
         <div class="d-flex" style="height:100%">
             <img src="/images/EVLuKB.png" class="mx-auto my-auto" style="max-height:100%; max-width:100%; object-fit:contain;" />
         </div>
     </MudCarouselItem>
-    <MudCarouselItem Transition="transition">
+    <MudCarouselItem Transition="Transition.Slide">
         <div class="d-flex" style="height:100%">
             <img src="/images/U_Q46n.png" class="mx-auto my-auto" style="max-height:100%; max-width:100%; object-fit:contain;" />
         </div>
     </MudCarouselItem>
 </MudCarousel>
-<MudSelect @bind-Value="transition" Label="Transition" Class="ma-2">
-    <MudSelectItem Value="@Transition.Fade">Fade</MudSelectItem>
-    <MudSelectItem Value="@Transition.Slide">Slide</MudSelectItem>
-    <MudSelectItem Value="@Transition.None">None</MudSelectItem>
-</MudSelect>
-<MudSwitch @bind-Value="arrows" Color="Color.Primary">Show Arrows</MudSwitch>
-<MudSwitch @bind-Value="bullets" Color="Color.Primary">Show Bullets</MudSwitch>
-<MudSwitch @bind-Value="enableSwipeGesture" Color="Color.Primary">Enable Swipe Gesture</MudSwitch>
-<MudSwitch @bind-Value="autocycle" Color="Color.Primary">Auto Cycle (Default: 5 secs)</MudSwitch>
-@code {
-    private bool arrows = true;
-    private bool bullets = true;
-    private bool enableSwipeGesture = true;
-    private bool autocycle = true;
-    private Transition transition = Transition.Slide;
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
+
+    <MudGrid Class="mb-8" AlignItems="AlignItems.Center">
+
+        <MudItem xs="12" md="3" Class="d-flex justify-center">
+            <img src="/images/profile.jpg" alt="Profile photo"
+                 style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid #2fae66;" />
+        </MudItem>
+
+        <MudItem xs="12" md="9">
+            <MudText Typo="Typo.h4" Class="mb-4" Style="color:#F0FDF4;">About Me</MudText>
+            <MudText Typo="Typo.body1" Style="color:#A7C4B0; max-width:720px;">
+                I'm a software developer working independently across Python, C#, and
+                Unity/VR. I build self-contained developer tools and data applications —
+                from desktop utilities to UK Companies House data processing and analysis
+                software. I mainly make things I haven't seen before or to solve a specific 
+                problem, and I enjoy exploring new technologies and approaches to development.'
+            </MudText>
+        </MudItem>
+
+    </MudGrid>
+
+    <MudGrid>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Class="pa-6" Elevation="0" Style="background-color:#111814; border:1px solid #1c2620; height:100%;">
+                <MudText Typo="Typo.h6" Class="mb-2" Style="color:#F0FDF4;">What I Do</MudText>
+                <MudText Typo="Typo.body2" Style="color:#A7C4B0;">
+                    Desktop applications, data processing tools, and business
+                    intelligence dashboards. built end-to-end from data pipeline
+                    to interface. Fun games and some tools for students.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Class="pa-6" Elevation="0" Style="background-color:#111814; border:1px solid #1c2620; height:100%;">
+                <MudText Typo="Typo.h6" Class="mb-2" Style="color:#F0FDF4;">How I Work</MudText>
+                <MudText Typo="Typo.body2" Style="color:#A7C4B0;">
+                    Independently, constantly iterating, with a focus on tools that 
+                    solve a specific well understood problem.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Class="pa-6" Elevation="0" Style="background-color:#111814; border:1px solid #1c2620; height:100%;">
+                <MudText Typo="Typo.h6" Class="mb-2" Style="color:#F0FDF4;">Beyond Code</MudText>
+                <MudText Typo="Typo.body2" Style="color:#A7C4B0;">
+                    Game development and VR, exploring networked multiplayer
+                    mechanics and immersive experiences outside of client work.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+    </MudGrid>
+
+    <MudGrid>
+        @foreach (var tech in _techStack)
+        {
+            <MudItem xs="3">
+                <MudPaper Class="pa-3 text-center" Elevation="0" Style="background-color: transparent;">
+                    @if (tech.IconUrl is not null)
+                    {
+                        <img src="@tech.IconUrl" alt="@tech.Name" style="width: 32px; height: 32px;" />
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@tech.MudIcon" Color="Color.Primary" Style="font-size: 32px;" />
+                    }
+                    <MudText Typo="Typo.caption" Class="mt-1" Style="display: block;">@tech.Name</MudText>
+                </MudPaper>
+            </MudItem>
+        }
+    </MudGrid>
+    <MudText Typo="Typo.subtitle1" Class="mt-10 mb-3" Style="color:#F0FDF4;">My Journey</MudText>
+
+    <MudPaper Class="pa-6" Elevation="0" Style="background-color:#111814; border:1px solid #1c2620;">
+        <MudText Typo="Typo.body1" Style="color:#A7C4B0; max-width:820px;">
+            I started first coding python when I was 11 and in year 7 of secondary,
+            attended a year 11 IT revsion club and later helped setup various tech
+            in time for events at school. When I was 13 I started learning C# and Unity,
+            and began developing my first game RAPID. It took 4 years but has not been 
+            released yet but it taught me to stop doing things off the cuff. I went on
+            to study IT in college, where I ran for a short time game development workshop
+            sessions to teach other students how to make games in Unity. After college,
+            I studied computer science at university, where I learned more about various 
+            approaches to software development, and made many projects including game
+            jams. Alongside uni, I started working at Flexworks as a solutions Architect
+            which got my foot in the door of business intelligence and data processing.
+            That role has enabled me to attend various networking events and discover
+            various companies needs and current climate. In my second year of university, 
+            I worked as a feedback engineer, marking various students and helping / 
+            teaching them how to program (mainly in C#). I was offered the role of 
+            president of the computer science society, which I accepted with an idea to
+            focus more things on the acedemic side by making tools such as Retino to help 
+            students learn and revise. 
+        </MudText>
+        <MudText Typo="Typo.body1" Class="mt-4" Style="color:#A7C4B0; max-width:820px;">
+            Looking to the future I want to put more of a focus of designing and building 
+            tools that help people, and to continue to explore new technologies. I hope to
+            continue work on games but with a focus on multiplayer and networked experiences.
+        </MudText>
+    </MudPaper>
+
+</MudContainer>
+
+@code{
+    private List<TechItem> _techStack = new()
+    {
+        new TechItem { Name = "Python", IconUrl = "https://cdn.simpleicons.org/python/3776AB" },
+        new TechItem { Name = "C# .net", IconUrl = "https://cdn.simpleicons.org/dotnet/512BD4" },
+        new TechItem { Name = "MudBlazor", IconUrl = "https://cdn.simpleicons.org/blazor/512BD4" },
+        new TechItem { Name = "Tesseract OCR", MudIcon = Icons.Material.Filled.DocumentScanner },
+        new TechItem { Name = "Companies House", MudIcon = Icons.Material.Filled.Business },
+        new TechItem { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+        new TechItem { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+        new TechItem { Name = "SQLite", IconUrl = "https://cdn.simpleicons.org/sqlite/003B57" },
+    };
+    public class TechItem
+    {
+        public string Name { get; set; } = "";
+        public string? IconUrl { get; set; }
+        public string? MudIcon { get; set; }
+    }
 }
