@@ -29,62 +29,105 @@
 <MudButton Variant="Variant.Filled" Disabled="true">Disabled</MudButton> *@
 <MudDivider />
 @* digital protfolio gallery *@
+<MudGrid Spacing="2">
 
-<MudGrid>
-    <MudItem xs="4">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">1</MudText>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="4">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">2</MudText>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="4">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">3</MudText>
+    @* ===== TOP: 4 VIDEOS ===== *@
+
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/LSclip.mp4" type="video/mp4" />
+            </video>
         </MudPaper>
     </MudItem>
 
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">4</MudText>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">5</MudText>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">6</MudText>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">7</MudText>
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/video2.mp4" type="video/mp4" />
+            </video>
         </MudPaper>
     </MudItem>
 
-    <MudItem xs="4">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">8</MudText>
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/OpenGL.mp4" type="video/mp4" />
+            </video>
         </MudPaper>
     </MudItem>
-    <MudItem xs="4">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">9</MudText>
+
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/COTSclip.mp4" type="video/mp4" />
+            </video>
         </MudPaper>
     </MudItem>
-    <MudItem xs="4">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full" Style="aspect-ratio: 16 / 9;">
-            <MudText Typo="Typo.h6">10</MudText>
+
+
+    @* ===== MIDDLE: 3 VIDEOS ===== *@
+
+    <MudItem xs="12" sm="4">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/retinoCLip.mp4" type="video/mp4" />
+            </video>
         </MudPaper>
     </MudItem>
+
+    <MudItem xs="12" sm="4">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/RAPIDclip.mp4" type="video/mp4" />
+            </video>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="12" sm="4">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/MRproj.mp4" type="video/mp4" />
+            </video>
+        </MudPaper>
+    </MudItem>
+
+
+    @* ===== BOTTOM: 4 VIDEOS ===== *@
+
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/ppclip.mp4" type="video/mp4" />
+            </video>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/Skyraze.mp4" type="video/mp4" />
+            </video>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/VRproj.mp4" type="video/mp4" />
+            </video>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="6" sm="3">
+        <MudPaper Class="video-tile">
+            <video class="video-player" autoplay muted loop playsinline>
+                <source src="/videos/SnpyClip.mp4" type="video/mp4" />
+            </video>
+        </MudPaper>
+    </MudItem>
+
 </MudGrid>
-
 <MudDivider />
 
 <!-- About Preview -->
@@ -196,9 +239,10 @@
         "Practical development across AI, game dev, graphics programming, VR/MR, and team-based projects.",
         "Game Jams (always top 3). Once led a team of 2 and delivered complete prototypes under time pressure.",
         "VR & MR Retail Systems. Built immersive retail simulations in Unity VR and Mixed Reality with custom interaction systems.",
-        "AI Chatbot Narrative Game (Agile, team of 3). Developed dialogue logic and sprint-based features for a game where players impersonate an AI.",
+        "AI Chatbot Narrative Game (Agile, team of 3) for a game where players impersonate an AI with general queries.",
         "OpenGL 3D Environment. Implemented matrices, indices, buffers, and scenegraphs for a custom rendering pipeline.",
-        "AI Module. Built and compared neural networks, A*, BFS/DFS, and non-linear regression for ML tasks."
+        "AI Module. Built and compared neural networks, A*, BFS/DFS, and non-linear regression for ML tasks.",
+        "Worked with Azure for setting up VMs, databases, and cloud services for various projects."
     };
 
     private List<ExperienceItem> _experience = new()
@@ -224,7 +268,7 @@
     new TechItem { Name = "Python", IconUrl = "https://cdn.simpleicons.org/python/3776AB" },
     new TechItem { Name = "C# .net", IconUrl = "https://cdn.simpleicons.org/dotnet/512BD4" },
     new TechItem { Name = "MudBlazor", IconUrl = "https://cdn.simpleicons.org/blazor/512BD4" },
-    new TechItem { Name = "OCR", MudIcon = Icons.Material.Filled.DocumentScanner },
+    new TechItem { Name = "Tesseract OCR", MudIcon = Icons.Material.Filled.DocumentScanner },
     new TechItem { Name = "Companies House", MudIcon = Icons.Material.Filled.Business },
     new TechItem { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
     new TechItem { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
@@ -313,7 +357,8 @@
 <MudDivider />
 
 <!-- Contact CTA -->
-<MudContainer MaxWidth="MaxWidth.Large" Class="py-12 text-center">
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-12 text-center"
+              Style="background-color: #1c1e1c; border-radius: 8px;">
     <MudText Typo="Typo.h4" Class="mb-4">Let's Work Together</MudText>
     <MudText Typo="Typo.body1" Class="mb-6">
         Placeholder call-to-action text. Have a project in mind or just want to chat? Reach out.

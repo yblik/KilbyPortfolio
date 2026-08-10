@@ -5,88 +5,78 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<MudLayout>
+<div class="page-scroll-wrapper">
 
+    <div class="honeycomb-bg-wrapper">
+        <svg class="honeycomb-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+            @foreach (var hex in hexes)
+            {
+                <polygon class="hex-base" points="@hex.Points"
+                         style="animation-delay:@(hex.Delay.ToString("F2"))s; animation-duration:@(hex.Duration.ToString("F2"))s;" />
+            }
+        </svg>
+    </div>
 
-    <MudAppBar Elevation="0"
-               Style="background: linear-gradient(135deg, #052E16, #14532D, #166534); color: white;">
+    <MudLayout>
 
-        <MudText Typo="Typo.h6" Class="mr-6">B.Kilby</MudText>
+        <MudAppBar Elevation="0"
+                   Style="background: linear-gradient(135deg, #052E16, #14532D, #166534); color: white;">
 
-        <MudButton Href="home" Color="Color.Inherit">
-            Home
-        </MudButton>
+            <MudText Typo="Typo.h6" Class="mr-6">B.Kilby</MudText>
 
-        <MudMenu Label="Projects"
-                 Color="Color.Inherit"
-                 Variant="Variant.Text">
+            <MudButton Href="home" Color="Color.Inherit">
+                Home
+            </MudButton>
 
-            <MudMenuItem Href="projects/companies-house">
-                Companies House Data Analyser
-            </MudMenuItem>
+            <MudMenu Label="Projects"
+                     Color="Color.Inherit"
+                     Variant="Variant.Text">
 
-            <MudMenuItem Href="projects/code-retineo">
-                Code Retineo
-            </MudMenuItem>
+                <MudMenuItem Href="projects/companies-house">
+                    Companies House Data Analyser
+                </MudMenuItem>
 
-            <MudMenuItem Href="projects/networked-arena">
-                Networked Arena
-            </MudMenuItem>
+                <MudMenuItem Href="projects/code-retineo">
+                    Code Retineo
+                </MudMenuItem>
 
-        </MudMenu>
+                <MudMenuItem Href="projects/networked-arena">
+                    Networked Arena
+                </MudMenuItem>
 
-        <MudButton Href="about" Color="Color.Inherit">
-            About
-        </MudButton>
+            </MudMenu>
 
-        <MudButton Href="contact" Color="Color.Inherit">
-            Contact
-        </MudButton>
+            <MudButton Href="about" Color="Color.Inherit">
+                About
+            </MudButton>
 
-        <MudSpacer />
+            <MudButton Href="contact" Color="Color.Inherit">
+                Contact
+            </MudButton>
 
-    </MudAppBar>
+            <MudSpacer />
 
+        </MudAppBar>
 
-    <MudMainContent>
-        @Body
-    </MudMainContent>
+        <MudMainContent>
+            @Body
+        </MudMainContent>
 
-</MudLayout>
+    </MudLayout>
 
-               
-@code {
-    private readonly MudTheme _theme = new()
-    {
-        PaletteDark = new PaletteDark
-        {
-            Primary = "#22C55E",
-            Secondary = "#16A34A",
-            Background = "#0A0F0D",
-            Surface = "#111814",
-            TextPrimary = "#F0FDF4",
-            TextSecondary = "#A7C4B0"
-        }
-    };
-}
-<!-- Place this component ONCE, e.g. in MainLayout.razor, so it sits behind all page content -->
-@* yeah just had this here but want to make it scroll  *@
-<div class="honeycomb-bg-wrapper">
-    <svg class="honeycomb-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-        @foreach (var hex in hexes)
-        {
-            <polygon class="hex-base" points="@hex.Points"
-                     style="animation-delay:@(hex.Delay.ToString("F2"))s; animation-duration:@(hex.Duration.ToString("F2"))s;" />
-        }
-    </svg>
 </div>
 
 <style>
+    /* Spans the full page content height (not just the viewport),
+           so the absolutely-positioned background below can stretch to match it. */
+    .page-scroll-wrapper {
+        position: relative;
+        min-height: 100vh;
+    }
+
     .honeycomb-bg-wrapper {
-        position: fixed;
+        position: absolute;
         inset: 0;
-        width: 100%;
-        height: 100%;
         z-index: -1;
         overflow: hidden;
         background: #0a0b0a;
@@ -128,6 +118,19 @@
 </style>
 
 @code {
+    private readonly MudTheme _theme = new()
+    {
+        PaletteDark = new PaletteDark
+        {
+            Primary = "#22C55E",
+            Secondary = "#16A34A",
+            Background = "#0A0F0D",
+            Surface = "#111814",
+            TextPrimary = "#F0FDF4",
+            TextSecondary = "#A7C4B0"
+        }
+    };
+
     private List<HexCell> hexes = new();
     private readonly Random rng = new();
 
