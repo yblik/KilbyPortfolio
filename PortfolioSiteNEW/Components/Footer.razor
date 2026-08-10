@@ -1,0 +1,66 @@
+@inject IJSRuntime JS
+@inject ISnackbar Snackbar
+
+<MudElement HtmlTag="footer" Style="background-color:#0a0f0d; border-top:1px solid #1c2620;">
+    <MudContainer MaxWidth="MaxWidth.Medium" Class="py-10 text-center">
+
+        <MudText Typo="Typo.h6" Class="mb-2" Style="color:#F0FDF4;">Ben Kilby</MudText>
+        <MudText Typo="Typo.body2" Class="mb-6" Style="color:#A7C4B0;">
+            Software developer, solutions architect, and game developer.
+        </MudText>
+
+        <MudText Typo="Typo.subtitle1" Class="mb-2" Style="color:#F0FDF4;">Get in Touch</MudText>
+
+        <MudStack Row="true" Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="1">
+            <MudLink Href="mailto:benthomaskilby@gmail.com" Underline="Underline.Hover" Style="color:#A7C4B0;">
+                benthomaskilby@gmail.com
+            </MudLink>
+            <MudIconButton Icon="@Icons.Material.Filled.ContentCopy"
+                           Size="Size.Small"
+                           Color="Color.Inherit"
+                           Style="color:#A7C4B0;"
+                           Title="Copy email address"
+                           OnClick="CopyEmail" />
+        </MudStack>
+
+        <MudStack Row="true" Justify="Justify.Center" Spacing="3" Class="mt-6">
+            <MudIconButton Href="https://www.linkedin.com/in/ben-kilby-hull/"
+                           Target="_blank"
+                           Icon="@Icons.Custom.Brands.LinkedIn"
+                           Color="Color.Inherit"
+                           Style="color:#A7C4B0;"
+                           Title="LinkedIn" />
+
+            <MudIconButton Href="https://github.com/yblik"
+                           Target="_blank"
+                           Icon="@Icons.Custom.Brands.GitHub"
+                           Color="Color.Inherit"
+                           Style="color:#A7C4B0;"
+                           Title="GitHub" />
+
+            <MudIconButton Href="@("https://www.youtube.com/@dlxinteractive")"
+                           Target="_blank"
+                           Icon="@Icons.Custom.Brands.YouTube"
+                           Color="Color.Inherit"
+                           Style="color:#A7C4B0;"
+                           Title="YouTube" />
+        </MudStack>
+
+        <MudDivider Class="my-6" Style="border-color:#1c2620;" />
+
+        <MudText Typo="Typo.body2" Style="color:#6B8579;">
+            © @DateTime.Now.Year Ben Kilby. All rights reserved.
+        </MudText>
+
+    </MudContainer>
+</MudElement>
+
+@code {
+    private const string Email = "benthomaskilby@gmail.com";
+
+    private async Task CopyEmail()
+    {
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", Email);
+        Snackbar.Add("Email address copied to clipboard", Severity.Success);
+    }
+}
