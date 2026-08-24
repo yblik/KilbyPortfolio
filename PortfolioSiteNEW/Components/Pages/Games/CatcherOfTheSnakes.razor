@@ -1,0 +1,45 @@
+﻿@page "/CatcherOfTheSnakes"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "Catcher Of The Snakes",
+        Description = "2nd Hull University Game Jam for Hull ThreeThingGame. Led a team of 2 to make a game in a week under the words ''Snakes, sending, Oceanliner''. We came 1st place under the name Beautiful Syntax which was a play on Beautiful South to include that yorkshire pride and the name was a reference to J.D Salinger's book Catcher In The Rye.",
+        VideoUrl = "videos/COTSclip.mp4",
+        KeyFeatures = new() { "Dynamic camera with character animations from Mixamo",
+           "Level built using my DLX Snappy tool entirely with a tile map of tiles made in blender",
+           "Snakes slither using a sine wave and burrow out and in the ground where they are reused as there was an issue with too many AI agents"},
+        Challenges = new() { "Merge conflicts with me ordering a rule where developers logged when they was on project and what changes - which mitigated some merge conflicts conflicts",
+           "GitHub went down near deadline which was cerainly not ideal so we had to make changes on seperate scenes and I stitched them together at end",
+           "Since I was the one with most experience with Unity, I had to teach some team members how to use the tool and best practices. Other 2 members focussed primarily on starting cutscene",
+        },
+        Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+        TechStack = new()
+           {
+               new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+                new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+                new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+                new() { Name = "Piskel", IconUrl = "https://cdn.simpleicons.org/piskel/4D4D4D" },
+
+                new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+                new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+                new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+                new() { Name = "Visual Studio", IconUrl = "https://cdn.simpleicons.org/visualstudio/5C2D91" },
+
+           },
+        Links = new()
+           {
+               new() { Label = "Footage", Url = "https://youtu.be/L7jmYV-UdPo?si=AooXKqk-Yt9syvvO"},
+               new() { Label = "Game page", Url = "https://dlx-interactive.itch.io/rapid" },
+           }
+    };
+}

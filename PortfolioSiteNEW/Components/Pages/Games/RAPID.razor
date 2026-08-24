@@ -1,0 +1,46 @@
+﻿@page "/RAPID"
+
+
+   <Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+       {
+           Title = "RAPID",
+           Description = "My first game I made when I was 13-17. Retro top down shoot em up where you play as a futuristic knight battling legions of Robots. I wrote a series of books alongside teaching my game design methodologies and a diary of the process but due to ever changing tech abandoned it.",
+           VideoUrl = "videos/RAPIDclip.mp4",
+           KeyFeatures = new() { "Incredibly optimised to run on old devices, 700MB, custom dynamic resolution system, usage of combined meshes, occulsion, LOD, distance culling", 
+           "27 Levels, 3 secret levels homages to retro games I grew up with, 2 additional game modes: outrun where you outrun a laser beam through randomly generated corridors, and legion which is a wave based arena combat mode", 
+           "Controller support, consistent hollistic UI, structured level designs based on doom WADS to highlight orthoganol unit differentiation", "Alternative to skelatal animation involving unity hinges and joints which worked for runtime cutscenes", "Came 2nd place in GameDevTroop tournament"},
+           Challenges = new() { "Doing things without a plan, I learned a lot brutally but I could've an should've been more meticulious", 
+           "Optimising and refactoring a poor code base where issues became more apparent as I got older, one issue involved removing 'findobjectoftype' scanning every frame, disabling unused entities. Other coding issues stemmed from a non object orientated code base and others from unneccessary complexity and shallow modules",
+           "Having to play test various segments causing cretaion of a cheat console to run through and debug. Playtesters also helped.",
+           "Working on project alongside secondary near GCSEs was also not the best idea. I got by but had a very poor sleep schedule, all will to power and determination on various tasks for game. So I could of been better acedemically and I became it later as a result of learning from this.",
+           "Publishing and funding is the main reason why the game was never released. As I get older I see now that single player games is a fragile market, RAPID isn't necessarily impressive but is fun for some - I myself may be blinded by kudos. I have much more faith with mutliplayer projects."},
+           Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+           TechStack = new()
+           {
+               new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+                new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+                new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+                new() { Name = "Piskel", IconUrl = "https://cdn.simpleicons.org/piskel/4D4D4D" },
+
+                new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+                new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+                new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+                new() { Name = "Visual Studio", IconUrl = "https://cdn.simpleicons.org/visualstudio/5C2D91" },
+
+           },
+           Links = new()
+           {
+               new() { Label = "Footage", Url = "https://youtu.be/L7jmYV-UdPo?si=AooXKqk-Yt9syvvO"},
+               new() { Label = "Game page", Url = "https://dlx-interactive.itch.io/rapid" },
+           }
+       };
+   }

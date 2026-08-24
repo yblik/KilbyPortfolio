@@ -1,0 +1,241 @@
+﻿@* ProjectShowcase.razor
+   Reusable project page. Usage:
+
+   <ProjectShowcase Project="@_myProject" />
+
+   @code {
+       private ProjectShowcase.ProjectData _myProject = new()
+       {
+           Title = "Companies House Processor",
+           Description = "A tool for bulk-processing UK Companies House data.",
+           VideoUrl = "videos/companies-house-demo.mp4",
+           KeyFeatures = new() { "Bulk CSV ingestion", "OCR via Tesseract", "BI dashboards" },
+           Challenges = new() { "Handling malformed source data", "Scaling OCR throughput" },
+           Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+           TechStack = new()
+           {
+               new() { Name = "Python", IconUrl = "https://cdn.simpleicons.org/python/3776AB" },
+               new() { Name = "SQLite", IconUrl = "https://cdn.simpleicons.org/sqlite/003B57" },
+           },
+           Links = new()
+           {
+               new() { Label = "GitHub", Url = "https://github.com/...", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+           }
+       };
+   }
+*@
+
+<div class="project-banner">
+    <video class="video-player banner-video" autoplay muted loop playsinline>
+        <source src="@TheProject.VideoUrl" type="video/mp4" />
+    </video>
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <MudText Typo="Typo.h3" Class="banner-title">@TheProject.Title</MudText>
+        @if (!string.IsNullOrWhiteSpace(TheProject.Description))
+        {
+            <MudText Typo="Typo.subtitle1" Class="banner-description">@TheProject.Description</MudText>
+        }
+    </div>
+</div>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-8">
+
+    @if (TheProject.KeyFeatures.Any())
+    {
+        <MudText Typo="Typo.h5" Class="mb-2">Key Features</MudText>
+        <MudList T="string" Dense="true" Class="mb-6">
+            @foreach (var feature in TheProject.KeyFeatures)
+            {
+                <MudListItem Icon="@Icons.Material.Filled.CheckCircle" IconColor="Color.Success">
+                    @feature
+                </MudListItem>
+            }
+        </MudList>
+    }
+
+    @if (TheProject.Challenges.Any())
+    {
+        <MudText Typo="Typo.h5" Class="mb-2">Challenges</MudText>
+        <MudList T="string" Dense="true" Class="mb-6">
+            @foreach (var challenge in TheProject.Challenges)
+            {
+                <MudListItem Icon="@Icons.Material.Filled.Bolt" IconColor="Color.Warning">
+                    @challenge
+                </MudListItem>
+            }
+        </MudList>
+    }
+
+    @if (TheProject.Gallery.Any())
+    {
+        <MudText Typo="Typo.h5" Class="mb-2">Gallery</MudText>
+        <MudGrid Spacing="2" Class="mb-6">
+            @foreach (var photo in TheProject.Gallery)
+            {
+                <MudItem xs="4">
+                    <MudPaper Class="gallery-tile" Elevation="1">
+                        <img src="@photo.Url" alt="@photo.Caption" class="gallery-image" />
+                        @if (!string.IsNullOrWhiteSpace(photo.Caption))
+                        {
+                            <MudText Typo="Typo.caption" Class="gallery-caption">@photo.Caption</MudText>
+                        }
+                    </MudPaper>
+                </MudItem>
+            }
+        </MudGrid>
+    }
+
+    @if (TheProject.TechStack.Any())
+    {
+        <MudText Typo="Typo.h5" Class="mb-2">Tech Stack</MudText>
+        <MudGrid Class="mb-6">
+            @foreach (var tech in TheProject.TechStack)
+            {
+                <MudItem xs="3">
+                    <MudPaper Class="pa-3 text-center" Elevation="0" Style="background-color: transparent;">
+                        @if (tech.IconUrl is not null)
+                        {
+                            <img src="@tech.IconUrl" alt="@tech.Name" style="width: 32px; height: 32px;" />
+                        }
+                        else
+                        {
+                            <MudIcon Icon="@tech.MudIcon" Color="Color.Primary" Style="font-size: 32px;" />
+                        }
+                        <MudText Typo="Typo.caption" Class="mt-1" Style="display: block;">@tech.Name</MudText>
+                    </MudPaper>
+                </MudItem>
+            }
+        </MudGrid>
+    }
+
+    @if (TheProject.Links.Any())
+    {
+        <MudText Typo="Typo.h5" Class="mb-2">Links</MudText>
+        <MudStack Row="true" Wrap="Wrap.Wrap" Spacing="2" Class="mb-6">
+            @foreach (var link in TheProject.Links)
+            {
+                <MudButton Variant="Variant.Outlined" Href="@link.Url" Target="_blank" Class="link-button">
+                    @if (link.IconUrl is not null)
+                    {
+                        <img src="@link.IconUrl" alt="@link.Label" class="link-icon" />
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@(link.MudIcon ?? Icons.Material.Filled.Link)" Size="Size.Small" Class="mr-1" />
+                    }
+                    @link.Label
+                </MudButton>
+            }
+        </MudStack>
+    }
+
+</MudContainer>
+
+@code {
+    [Parameter, EditorRequired]
+    public ProjectData TheProject { get; set; } = new();
+
+    public class ProjectData
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string VideoUrl { get; set; } = "";
+        public List<string> KeyFeatures { get; set; } = new();
+        public List<string> Challenges { get; set; } = new();
+        public List<GalleryImage> Gallery { get; set; } = new();
+        public List<TechItem> TechStack { get; set; } = new();
+        public List<LinkItem> Links { get; set; } = new();
+    }
+
+    public class GalleryImage
+    {
+        public string Url { get; set; } = "";
+        public string? Caption { get; set; }
+    }
+
+    public class TechItem
+    {
+        public string Name { get; set; } = "";
+        public string? IconUrl { get; set; }
+        public string? MudIcon { get; set; }
+    }
+
+    public class LinkItem
+    {
+        public string Label { get; set; } = "";
+        public string Url { get; set; } = "";
+        public string? IconUrl { get; set; }
+        public string? MudIcon { get; set; }
+    }
+}
+
+<style>
+    .project-banner {
+        position: relative;
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+        margin-top: 48px;
+    }
+
+    .banner-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.15) 100%);
+        pointer-events: none;
+    }
+
+    .banner-content {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 32px;
+        color: #fff;
+        z-index: 2;
+    }
+
+    .banner-title {
+        font-weight: 700;
+    }
+
+    .banner-description {
+        max-width: 700px;
+        opacity: 0.9;
+        margin-top: 4px;
+    }
+
+    .gallery-tile {
+        overflow: hidden;
+    }
+
+    .gallery-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+    }
+
+    .gallery-caption {
+        display: block;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .link-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+    }
+</style>

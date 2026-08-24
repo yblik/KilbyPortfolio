@@ -12,11 +12,15 @@
     <p class="quote">Constantly learning, growing, taking feedback and reaching heights</p>
 
     <div class="cta-row">
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/projects"
-                   EndIcon="@Icons.Material.Filled.ArrowForward">
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Href="/files/BKILBY CV 2026.pdf"
+                   Download="BKILBY CV 2026.pdf"
+                   EndIcon="@Icons.Material.Filled.Download">
             View My CV
         </MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Href="/contact"
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Href="#bottom"
                    StartIcon="@Icons.Material.Filled.Mail">
             Get in Touch
         </MudButton>
@@ -36,7 +40,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/LSclip.mp4" type="video/mp4" />
+                <source src="videos\LSclip.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -52,7 +56,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/OpenGL.mp4" type="video/mp4" />
+                <source src="videos\OpenGL.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -60,7 +64,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/COTSclip.mp4" type="video/mp4" />
+                <source src="videos\COTSclip.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -71,7 +75,7 @@
     <MudItem xs="12" sm="4">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/retinoCLip.mp4" type="video/mp4" />
+                <source src="videos\retinoCLip.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -79,7 +83,7 @@
     <MudItem xs="12" sm="4">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/RAPIDclip.mp4" type="video/mp4" />
+                <source src="videos\RAPIDclip.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -87,7 +91,7 @@
     <MudItem xs="12" sm="4">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/MRproj.mp4" type="video/mp4" />
+                <source src="videos\MRproj.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -98,7 +102,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/ppclip.mp4" type="video/mp4" />
+                <source src="videos\ppclip.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -106,7 +110,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/Skyraze.mp4" type="video/mp4" />
+                <source src="videos\Skyraze.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -114,7 +118,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/VRproj.mp4" type="video/mp4" />
+                <source src="videos\VRproj.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -122,7 +126,7 @@
     <MudItem xs="6" sm="3">
         <MudPaper Class="video-tile">
             <video class="video-player" autoplay muted loop playsinline>
-                <source src="/videos/SnpyClip.mp4" type="video/mp4" />
+                <source src="videos\SnpyClip.mp4" type="video/mp4" />
             </video>
         </MudPaper>
     </MudItem>
@@ -342,7 +346,7 @@
 <MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
     <MudText Typo="Typo.h4" Class="mb-2">Featured Projects</MudText>
     <MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-6">
-        A few things I've been building. Placeholder descriptions — swap in real project details.
+        A few things I've been building.
     </MudText>
     <MudGrid>
         @foreach (var project in ProjectData.Projects)
@@ -353,7 +357,7 @@
         }
     </MudGrid>
 </MudContainer>
-
+<div id="bottom"></div>
 <MudDivider />
 
 

@@ -1,0 +1,50 @@
+﻿@page "/PandorasPanic"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "Pandora's Panic",
+        Description = "3rd Hull University Game Jam, this time for Arcademia. The theme was pandora's box and origionally I wasn't going to do it. It was late at uni and I was waiting to head home with a friend so he gets out and we watch the presentation together. I had no idea what to do for the theme so we sat in his car and brainstormed silly things, natural disasters, gambling, bees. I ended with the idea of all them where you shake the pandora's box at the start and have to survive each roll. After the jam I gave an interview on how I made the game.",
+        VideoUrl = "videos/ppclip.mp4",
+        KeyFeatures = new() { "Almost entirely destructable environments that have buildings explode from impact",
+           "3 Game modes: Asteroid Mania - survive asteroids, Bounce of Sisyphus - survive a bouncing boulder (imagine Sisyphus bouncing, Scorching Tiles - floor is lava, and Harrowing Hornets - bees like Hollow Knight Mantis Lords fight (have a friend afraid of bees))",
+           "Full character animations, controller support, NPC's stop screaming when eliminated"},
+        Challenges = new() { "Managing too many destructable objects, having to have some parts not destructable",
+           "Managing physics from destructable environments and making them not affect player, had an issue where physics applied to player and caused abnormal behaviour or limited movement (disabled player beign affected by them collisions and had impact bubbles for damage)",
+           "Adding the hornet fight in with multiple stages but got there in the end (just to tease that friend afraid of bees)",
+        },
+        Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+        TechStack = new()
+        {
+            new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+            new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+            new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+
+            // Mixamo (no SimpleIcons — using official Adobe-hosted logo)
+            new() { Name = "Mixamo", IconUrl = "https://www.mixamo.com/assets/mixamo-logo.svg" },
+
+            // Poly Pizza (no SimpleIcons — using official site logo)
+            new() { Name = "Poly Pizza", IconUrl = "https://poly.pizza/static/media/logo.3c5c1e7f.svg" },
+
+            new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+            new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+            new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+        },
+
+        Links = new()
+           {
+               new() { Label = "Game page", Url = "https://dlx-interactive.itch.io/pandoras-panic"},
+               new() { Label = "Footage", Url = "https://youtu.be/1rb-YufQ_Kk?si=L_n7UcTNDkD5GD0z"},
+               new() { Label = "Interview (5:40)", Url = "https://www.youtube.com/watch?v=Bd3QSYXvOtk" },
+           }
+    };
+}
