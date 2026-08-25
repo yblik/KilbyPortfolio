@@ -19,16 +19,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: '8.0.x'
 
-      - name: Find project
-        run: find . -name "*.csproj" -print
-
-      - name: Publish
-        run: dotnet publish ./PortfolioSiteNEW/PortfolioSiteNEW/PortfolioSiteNEW.csproj -c Release -o ./published
+      - name: Publish Blazor app
+        shell: bash
+        run: |
+          PROJECT=$(find . -name "*.csproj" -print -quit)
+          echo "Found project: $PROJECT"
+          dotnet publish "$PROJECT" -c Release -o ./published
 
       - name: Set GitHub Pages base path
-        run: sed -i 's|<base href="/" />|<base href="/PortfolioSiteNEW/" />|' ./published/wwwroot/index.html
+        shell: bash
+        run: |
+          sed -i 's|<base href="/" />|<base href="/PortfolioSiteNEW/" />|' ./published/wwwroot/index.html
 
       - name: Add .nojekyll
         run: touch ./published/wwwroot/.nojekyll
