@@ -31,7 +31,7 @@ jobs:
       - name: Set GitHub Pages base path
         shell: bash
         run: |
-          sed -i 's|<base href="/" />|<base href="/PortfolioSiteNEW/" />|' ./published/wwwroot/index.html
+          sed -i 's|<base href="/" />|<base href="/KilbyPortfolio/" />|' ./published/wwwroot/index.html
 
       - name: Add .nojekyll
         run: touch ./published/wwwroot/.nojekyll
