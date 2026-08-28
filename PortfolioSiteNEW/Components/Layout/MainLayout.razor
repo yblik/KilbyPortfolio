@@ -17,6 +17,8 @@
         </svg>
     </div>
 
+    @inject NavigationManager NavManager
+
     <MudLayout>
 
         <MudAppBar Elevation="0"
@@ -24,87 +26,86 @@
 
             <MudText Typo="Typo.h6" Class="mr-6">B.Kilby</MudText>
 
-            <MudButton Href="home" Color="Color.Inherit">
-                Home
-            </MudButton>
+            <MudStack Row="true" Class="nav-desktop" Spacing="1" AlignItems="AlignItems.Center">
+                <MudButton Href="home" Color="Color.Inherit">
+                    Home
+                </MudButton>
 
-            <MudMenu Label="Projects"
-                     Color="Color.Inherit"
-                     Variant="Variant.Text">
+                <MudMenu Label="Projects" Color="Color.Inherit" Variant="Variant.Text">
+                    <MudMenuItem Href="UnderConstruction">Companies House Data Analyser</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Code Retineo</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Networked Arena</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">DLX Snappy</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Legal system</MudMenuItem>
+                </MudMenu>
 
-                <MudMenuItem Href="UnderConstruction">
-                    Companies House Data Analyser
-                </MudMenuItem>
+                <MudMenu Label="Games" Color="Color.Inherit" Variant="Variant.Text">
+                    <MudMenuItem Href="RAPID">RAPID</MudMenuItem>
+                    <MudMenuItem Href="CatcherOfTheSnakes">Catcher Of The Snakes</MudMenuItem>
+                    <MudMenuItem Href="PandorasPanic">Pandora's Panic</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Skyraze</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Drum and Jelly</MudMenuItem>
+                </MudMenu>
 
-                <MudMenuItem Href="UnderConstruction">
-                    Code Retineo
-                </MudMenuItem>
+                <MudMenu Label="Uni projects" Color="Color.Inherit" Variant="Variant.Text">
+                    <MudMenuItem Href="UnderConstruction">Mixed reality</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">VR retail game</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Open GL environment</MudMenuItem>
+                    <MudMenuItem Href="UnderConstruction">Prompt Panic (group work)</MudMenuItem>
+                </MudMenu>
 
-                <MudMenuItem Href="UnderConstruction">
-                    Networked Arena
-                </MudMenuItem>
-                <MudMenuItem Href="UnderConstruction">
-                    DLX Snappy
-                </MudMenuItem>
-                <MudMenuItem Href="UnderConstruction">
-                    Legal system
-                </MudMenuItem>
-
-            </MudMenu>
-
-
-            <MudMenu Label="Games"
-                     Color="Color.Inherit"
-                     Variant="Variant.Text">
-
-                <MudMenuItem Href="RAPID">
-                    RAPID
-                </MudMenuItem>
-                <MudMenuItem Href="CatcherOfTheSnakes">
-                    Catcher Of The Snakes
-                </MudMenuItem>
-
-                <MudMenuItem Href="PandorasPanic">
-                    Pandora's Panic
-                </MudMenuItem>
-                <MudMenuItem Href="UnderConstruction">
-                    Skyraze
-                </MudMenuItem>
-                <MudMenuItem Href="UnderConstruction">
-                    Drum and Jelly
-                </MudMenuItem>
-
-            </MudMenu>
-
-            
-            <MudMenu Label="Uni projects"
-                     Color="Color.Inherit"
-                     Variant="Variant.Text">
-
-                <MudMenuItem Href="UnderConstruction">
-                    Mixed reality
-                </MudMenuItem>
-
-                <MudMenuItem Href="UnderConstruction">
-                    VR retail game
-                </MudMenuItem>
-
-                <MudMenuItem Href="UnderConstruction">
-                    Open GL environment
-                </MudMenuItem>
-                <MudMenuItem Href="UnderConstruction">
-                    Prompt Panic (group work)
-                </MudMenuItem>
-
-            </MudMenu>
-
-            <MudButton Href="about" Color="Color.Inherit">
-                About
-            </MudButton>
+                <MudButton Href="about" Color="Color.Inherit">
+                    About
+                </MudButton>
+            </MudStack>
 
             <MudSpacer />
 
+            <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                           Color="Color.Inherit"
+                           Class="nav-hamburger"
+                           OnClick="@(() => _drawerOpen = !_drawerOpen)" />
+
         </MudAppBar>
+
+        <MudDrawer @bind-Open="_drawerOpen"
+                   Anchor="Anchor.Right"
+                   Elevation="1"
+                   Variant="DrawerVariant.Temporary"
+                   Style="background: linear-gradient(180deg, #052E16, #14532D); color: white;">
+
+            <MudNavMenu Color="Color.Inherit">
+
+                <MudNavLink Href="home" Match="NavLinkMatch.All" OnClick="CloseDrawer">Home</MudNavLink>
+
+                <MudNavGroup Title="Projects" Expanded="false">
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Companies House Data Analyser</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Code Retineo</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Networked Arena</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">DLX Snappy</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Legal system</MudNavLink>
+                </MudNavGroup>
+
+                <MudNavGroup Title="Games" Expanded="false">
+                    <MudNavLink Href="RAPID" OnClick="CloseDrawer">RAPID</MudNavLink>
+                    <MudNavLink Href="CatcherOfTheSnakes" OnClick="CloseDrawer">Catcher Of The Snakes</MudNavLink>
+                    <MudNavLink Href="PandorasPanic" OnClick="CloseDrawer">Pandora's Panic</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Skyraze</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Drum and Jelly</MudNavLink>
+                </MudNavGroup>
+
+                <MudNavGroup Title="Uni projects" Expanded="false">
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Mixed reality</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">VR retail game</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Open GL environment</MudNavLink>
+                    <MudNavLink Href="UnderConstruction" OnClick="CloseDrawer">Prompt Panic (group work)</MudNavLink>
+                </MudNavGroup>
+
+                <MudNavLink Href="about" Match="NavLinkMatch.All" OnClick="CloseDrawer">About</MudNavLink>
+
+            </MudNavMenu>
+
+        </MudDrawer>
 
         <MudMainContent>
             @Body
@@ -112,6 +113,31 @@
         </MudMainContent>
 
     </MudLayout>
+
+    <style>
+            .nav-hamburger {
+                display: none;
+            }
+
+            @@media (max-width: 900px) {
+                .nav-desktop {
+                    display: none !important;
+                }
+
+                .nav-hamburger {
+                    display: inline-flex;
+                }
+            }
+    </style>
+
+@code {
+    private bool _drawerOpen = false;
+
+    private void CloseDrawer()
+    {
+        _drawerOpen = false;
+    }
+}
 
 </div>
 
