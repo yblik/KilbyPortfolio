@@ -1,0 +1,48 @@
+﻿@page "/VRunigame"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "VR retail game",
+        Description = "Made for university assignment with XR plugin. First project for uni XR module which I worked on more passionately than the MR one. I made the game more unique with a dark fantasy style. On a few technicalities for datapipelines it didn't score as high but I was proud of what I created. When I made the MR project unique it got praise instead.",
+        VideoUrl = "videos/VRproj.mp4",
+        KeyFeatures = new() { "Shelf placing data driven system with 3D UI which can unlock store room",
+           "Data validation system for placing objects via a tag system which can be viewed as a shopping label for diegetic UI",
+           "Full 3D environment with modular shelfs, paintings, statues, candle FX, custom music, full SFX and a E-commerce simulator console"},
+        Challenges = new() { "The hardest and most annoying was testing as it took 5 minutes to go into PCVR, select unity, hit play each time for testing meaning each iteration had to be significant",
+           "Many issues with setting up VR drivers, OVR server, getting my friends headset (which I used at home) to sign in with developer mode among other settings",
+           "Some systems took a while to add like the realistic physics tuning for grabbing and throwing objects. Moreover when unity version needed to change to be aligned with assignment requirement, many systems had to be reworked or remade",
+        },
+        Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+        TechStack = new()
+        {
+            new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+            new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+            new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+
+            // Mixamo (no SimpleIcons — using official Adobe-hosted logo)
+            new() { Name = "Mixamo", IconUrl = "https://www.mixamo.com/assets/mixamo-logo.svg" },
+
+            // Poly Pizza (no SimpleIcons — using official site logo)
+            new() { Name = "Poly Pizza", IconUrl = "https://poly.pizza/static/media/logo.3c5c1e7f.svg" },
+
+            new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+            new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+            new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+        },
+
+        Links = new()
+        {
+
+        }
+    };
+}
