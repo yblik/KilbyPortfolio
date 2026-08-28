@@ -1,0 +1,48 @@
+﻿@page "/MixedRealityProject"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "Mixed reality project",
+        Description = "Made for university assignment with meta XR building blocks for full passthrough. It was the follow up to the VR game and used the same assets but overlapped digital world into the real world for full immersion. You could walk around, grab objects from shelf, inspect and throw them aswell as buy them at a checkout. Scored highest in class. ",
+        VideoUrl = "videos/MRproj.mp4",
+        KeyFeatures = new() { "Full passthrough and body tracking allowing full movement around room",
+           "Shader to cull objects behind scanned areas as it would in real life. Holographic and materialising shader when scanning items on EPOS",
+           "Shelfs on top of desks (unaffected by scaling), and EPOS at lectern with floors, ceiling and paintings dotted around with anchored objects such as aisle marker, direction sign and platform."},
+        Challenges = new() { "Testing was a very long arduous process requiring building each time and not all headsets were working so me and other classmates went through multitudes of meta quest 3s which USB debugging did not work and swapout when batteries were low",
+           "All room elements had to be scanned for digital scene to work which sometimes didn't scan and took 10 minutes each time requiring assigned headsets when shared. Additionally anchors had to be replaced per new headset (risking losing placed anchors if someone had my headset)",
+           "Issue getting both floor and roof to scale to fit rooms proportions from default object placer not working requiring custom anchor placer to be made",
+        },
+        Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+        TechStack = new()
+        {
+            new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+            new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+            new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+
+            // Mixamo (no SimpleIcons — using official Adobe-hosted logo)
+            new() { Name = "Mixamo", IconUrl = "https://www.mixamo.com/assets/mixamo-logo.svg" },
+
+            // Poly Pizza (no SimpleIcons — using official site logo)
+            new() { Name = "Poly Pizza", IconUrl = "https://poly.pizza/static/media/logo.3c5c1e7f.svg" },
+
+            new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+            new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+            new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+        },
+
+        Links = new()
+           {
+
+           }
+    };
+}
