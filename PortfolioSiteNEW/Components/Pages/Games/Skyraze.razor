@@ -1,0 +1,43 @@
+﻿@page "/SKYRAZE"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "SKYRAZE",
+        Description = "An arcade flying game I made in 4 days and recorded the whole process of as a means to condition myself for game jams. I was 16, just completed GCSEs, off for summer and saw the mach loops in wales and was inspired. I made a plan and executed it, producing and releasing in the 4 days.",
+        VideoUrl = "videos/Skyraze.mp4",
+        KeyFeatures = new() { "Animation object pool projectile system resulting in myriads of projectiles at once with mild performance dips",
+           "Precise trigger detection that goes in tandem with animations by kinematic rigidbodies set to continious dynamic, picking up all collisions",
+           "All levels used template-based generation akin to Splunky's, 3 environmental areas, and shopping system"},
+        Challenges = new() { "It was a very stressful process as I wasn't yet used to working on a strigent schedule as this was my first project following a plan",
+           "Overall the development was easy going as it was based upon the animation pooled trigger system I prior prototyped which took a while to finetune and recreate",
+           "It was effort to keep recording footage and to keep track if recordings was still working for evidence I did make it in the 4 days with barely any help or copying and pasting pre-existing systems"},
+        Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+        TechStack = new()
+           {
+               new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+                new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+                new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+                new() { Name = "Piskel", IconUrl = "https://cdn.simpleicons.org/piskel/4D4D4D" },
+
+                new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+                new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+                new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+                new() { Name = "Visual Studio", IconUrl = "https://cdn.simpleicons.org/visualstudio/5C2D91" },
+
+           },
+        Links = new()
+           {
+               new() { Label = "Game page", Url = "https://dlx-interactive.itch.io/skyraze" },
+           }
+    };
+}

@@ -1,0 +1,49 @@
+﻿@page "/DrumAndJelly"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "Drum and Jelly",
+        Description = "Made for the 1st Hull University ThreeThingGame Jam for CS 50th. The theme was Hull, jellyfish and queue so I came up with a game in 2 days where you was serving queues of jelly fish customers at a pub in hull playing as an axolotl in a dinner jacket. I came 3rd",
+        VideoUrl = "",
+        KeyFeatures = new() { "Jelly fish AI to allocate and fill tables, causing more needed otherwise queue becomes too large",
+           "Drunk AI that makes jellyfish act dyspraxic by having waypoints around them that is set to target to mimick drunk movement and mechanic so drunk and disordely jellyfish can be kicked out (got a few laughs at presentation)",
+           "Club sounding effect by muffled EQ of various songs that played at that pub"},
+        Challenges = new() { "Entire first day was spent on the AI and I spent a full day on it from the short time I had, having 3 hours of sleep where I went back to polish everything up",
+           "Queue system was very difficult to implement and was achieved by a node based trial of way points per each jellyfish",
+           "There was an issue where if too many jellyfish at once, all stop working so I couldn't have too many as there was no work around",
+        },
+        Gallery = new()
+           {
+               new() { Url = "images/ch1.png", Caption = "Import screen" },
+               new() { Url = "images/ch2.png", Caption = "Dashboard view" },
+           },
+        TechStack = new()
+        {
+            new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+            new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+            new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+
+            // Mixamo (no SimpleIcons — using official Adobe-hosted logo)
+            new() { Name = "Mixamo", IconUrl = "https://www.mixamo.com/assets/mixamo-logo.svg" },
+
+            // Poly Pizza (no SimpleIcons — using official site logo)
+            new() { Name = "Poly Pizza", IconUrl = "https://poly.pizza/static/media/logo.3c5c1e7f.svg" },
+
+            new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+            new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+            new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+        },
+
+        Links = new()
+           {
+               new() { Label = "Game page", Url = "https://dlx-interactive.itch.io/drum-and-jelly"},
+               new() { Label = "Footage", Url = "https://www.youtube.com/watch?v=7K3hdvZOqsg"},
+           }
+    };
+}
