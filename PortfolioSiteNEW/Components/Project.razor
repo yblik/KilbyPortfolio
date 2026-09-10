@@ -29,6 +29,7 @@
    }
 *@
 
+
 <div class="project-banner">
     <video class="video-player banner-video" autoplay muted loop playsinline>
         <source src="@TheProject.VideoUrl" type="video/mp4" />
@@ -36,14 +37,15 @@
     <div class="banner-overlay"></div>
     <div class="banner-content">
         <MudText Typo="Typo.h3" Class="banner-title">@TheProject.Title</MudText>
-        @if (!string.IsNullOrWhiteSpace(TheProject.Description))
-        {
-            <MudText Typo="Typo.subtitle1" Class="banner-description">@TheProject.Description</MudText>
-        }
     </div>
 </div>
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-8">
+
+    @if (!string.IsNullOrWhiteSpace(TheProject.Description))
+    {
+        <MudText Typo="Typo.subtitle1" Class="banner-description-below mb-6">@TheProject.Description</MudText>
+    }
 
     @if (TheProject.KeyFeatures.Any())
     {
@@ -210,10 +212,9 @@
         font-weight: 700;
     }
 
-    .banner-description {
+    .banner-description-below {
         max-width: 700px;
-        opacity: 0.9;
-        margin-top: 4px;
+        opacity: 0.85;
     }
 
     .gallery-tile {
