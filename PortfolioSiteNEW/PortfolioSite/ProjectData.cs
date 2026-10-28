@@ -22,24 +22,24 @@ public static class ProjectData
             Title = "Companies House Data Analyser",
             Description = "A Python application for processing UK Companies House data, with BI-style dashboards for exploring and filtering company records.",
             Icon = Icons.Material.Filled.Business,
-            Url = "/projects/companies-house",
-            Tags = new() { "Python", "Data Analysis", "Dashboards" }
+            Url = "NotFound",
+            Tags = new() { "Python", "Data Analysis", "Dashboards", "Business intelligence"}
         },
         new ProjectInfo
         {
             Title = "Code Retineo",
             Description = "A C# WinForms desktop app for practising code memorisation and recall through timed, repeatable exercises.",
             Icon = Icons.Material.Filled.Memory,
-            Url = "/projects/code-retineo",
-            Tags = new() { "C#", "WinForms", "Desktop" }
+            Url = "NotFound",
+            Tags = new() { "C#", "Blazor", "Site", "Revision" }
         },
         new ProjectInfo
         {
             Title = "Networked Arena",
             Description = "A multiplayer Unity game built with Netcode for GameObjects, focused on synced real-time gameplay mechanics.",
             Icon = Icons.Material.Filled.SportsEsports,
-            Url = "/projects/networked-arena",
-            Tags = new() { "Unity", "C#", "Multiplayer" }
+            Url = "NetworkedArenaPrototype",
+            Tags = new() { "Unity", "C#", "Multiplayer", "Steamworks"}
         }
     };
 }

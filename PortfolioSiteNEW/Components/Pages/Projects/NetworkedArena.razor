@@ -1,0 +1,46 @@
+﻿@page "/NetworkedArenaPrototype"
+
+
+<Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+    {
+        Title = "Networked arena prototype",
+        Description = "Steam based arena shooter prototype. Was a main dive into learning unity netcode, network paradigms and a reattempt from before. Thanks to all friends that tested this and found myraids of issues!",
+        VideoUrl = "images/TODO.jpg",
+        KeyFeatures = new() { "Peer to peer networking using fizzy steamworks, facepunch",
+           "Synced states (respawning, dying, +sub animation states) and skelatal animations which worked with inverse kinematics to seperate upper torso from lower for orientation and movement animations",
+           "Lobby system in with chatroom"},
+        Challenges = new() { "Working with syncing various actions from animations to states which was a arduous process by having to understand RPC order while working with network variables + getting head around singletons",
+           "Trying to work around a mismatch of host server and clients as behaviour did not match most time requiring long sessions of troubleshooting, debugging and learning networking concepts.",
+           "Growing compelexity of systems and multiple preqrequisites required for networked gameobjects (if one thing was forgotten logic would likely fail)",
+           "Testing the project was a long process by building, posting on itch.io, downloading, adding to steam library, creating lobby, copying lobby ID, sending message on itch.io comments to copy that (most testing was insuccessful too and no clear way of debugging certain parts)",
+           },
+        Gallery = new()
+           {
+               new() { Url = "images/TODO.jpg", Caption = "img" },
+               new() { Url = "images/TODO.jpg", Caption = "img" },
+           },
+        TechStack = new()
+           {
+               new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+                new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+
+                new() { Name = "Blender", IconUrl = "https://cdn.simpleicons.org/blender/F5792A" },
+                new() { Name = "Steam", IconUrl = "https://cdn.simpleicons.org/steam?utm_source=chatgpt.com" },
+
+                new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+                new() { Name = "itch.io", IconUrl = "https://cdn.simpleicons.org/itchdotio/FA5C5C" },
+
+                new() { Name = "Facepunch", IconUrl = "https://cdn.simpleicons.org/facepunch?utm_source=chatgpt.com" },
+                new() { Name = "Visual Studio", IconUrl = "https://cdn.simpleicons.org/visualstudio/5C2D91" },
+
+           },
+        Links = new()
+           {
+               // new() { Label = "Footage", Url = "https:youtu.be/L7jmYV-UdPo?si=AooXKqk-Yt9syvvO"},
+               // new() { Label = "Game page", Url = "https:dlx-interactive.itch.io/rapid" },
+           }
+    };
+}
