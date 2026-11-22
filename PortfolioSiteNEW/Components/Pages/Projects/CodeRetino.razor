@@ -1,0 +1,44 @@
+﻿@page "/CodeRetineo"
+
+
+   <Project TheProject="@_myProject" />
+
+@code {
+    private Project.ProjectData _myProject = new()
+       {
+           Title = "Code Retineo",
+           Description = "Revision tool to help out students practice their coding skills and improve recall. Initially I made it for myself as I felt I became a little rusty at coding but felt it could benefit others. From my role at uni as a feedback engineer I've seen what students have struggled with and made unique packs to help them and build confidence.",
+           VideoUrl = "videos/RetinoNew.mp4",
+           KeyFeatures = new() { "Tokenises code allowing it to display a % of completion and when incorrect characters are entered", 
+           "Built for practicing wide array of languages like C#, Python (including libraries likek fast API), SQL, and C++ - it's an open ended system", 
+           "Stores prompt challenges in various json packs which can be created for custom packs", "Will eventually be able to select custom pacts, store metrics, and more", "Next update will add a cookbook to help students if something they impllement takes too many steps and they need to refresh"},
+           Challenges = new() { "It was difficult to design and implement the tokenising logic with the project beion revisited occassionally at first so it had to be redesigned especially when it was a windows forms project - reducing technical debt",
+           "Parts of it was extremelly arduous since testing took a while, if it broke then entire site would not load - making unknown unkowns / edge cases not a fun time",
+           "Even now thhe tokeniser constantly updating, strings, arrays, fields - all the sub containers was a nightmare to add, strings sometimes flagh an error on last character if writing inside but arrays, touples and dicts seem to work fine now"},
+
+           Gallery = new()
+           {
+               new() { Url = "images/TODO.jpg", Caption = "img" },
+               new() { Url = "images/TODO.jpg", Caption = "img" },
+           },
+           TechStack = new()
+           {
+               new() { Name = "C#", IconUrl = "https://cdn.simpleicons.org/csharp/239120" },
+                new() { Name = "Unity", IconUrl = "https://cdn.simpleicons.org/unity/FFFFFF" },
+                new() { Name = "Blazor", IconUrl = "https://cdn.simpleicons.org/blazor/512BD4" },
+                new() { Name = "Mud blazor", IconUrl = "https://cdn.simpleicons.org/blazor/512BD4" },
+
+                new() { Name = "Trello", IconUrl = "https://cdn.simpleicons.org/trello/0052CC" },
+                new() { Name = "CSS", IconUrl = "https://cdn.simpleicons.org/css/1572B6" },
+
+                new() { Name = "GitHub", IconUrl = "https://cdn.simpleicons.org/github/FFFFFF" },
+                new() { Name = "Visual Studio", IconUrl = "https://cdn.simpleicons.org/visualstudio/5C2D91" },
+
+           },
+           Links = new()
+           {
+               new() { Label = "Footage", Url = "https://www.youtube.com/watch?v=6vZltY_DkBc"},
+               new() { Label = "Site", Url = "https://uoh-cs-level6.github.io/CodeRetineoHullCS/" },
+           }
+       };
+   }
