@@ -10,6 +10,7 @@
     <None Remove="images\cheeky1.jpg" />
     <None Remove="images\cheeky2.jpg" />
     <None Remove="images\EstudiousCOllection.jpg" />
+    <None Remove="videos\RetinoNew.mp4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +54,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="videos\RetinoNew.mp4" />
     <Content Include="videos\Skyraze.mp4">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
